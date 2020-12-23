@@ -1,0 +1,40 @@
+const express = require("express");
+const app = express();
+const fs = require("fs");
+// bodyParser : request body를 json 형식으로 변환
+const bodyParser = require("body-parser")
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
+
+app.get('/', function(req, res){
+    fs.readFile('./public/test.html' , function(error,data){
+        if(error){
+            console.log(error);
+        }
+        else{
+            res.writeHead(200,{'Content-Type':'text/html'});
+            res.end(data);
+        }
+    })
+})
+
+//AJAX GET METHOD
+app.get('/api/get',function(req,res) {
+    var data = req.query.data;
+    console.log('GET Parameter = ' + data);
+    var result = data + ' Success';
+    console.log(result);
+    res.send({result:result});
+});
+//AJAX POST METHOD
+app.post('/api/post', function(req, res){
+    var data = req.body.data;
+    console.log('POST Parameter = ' + data);
+    var result = data + ' Success';
+    console.log(result);
+    res.send({result:result});
+});
+
+app.listen(5005, () =>{
+    console.log('Example app listening an port 5005! : 127.0.0.1:5005');
+})
