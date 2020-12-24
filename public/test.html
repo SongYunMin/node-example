@@ -29,20 +29,29 @@
                 //     }
                 // });
             });
+
             $('#postMethod').click(function () {
                 var post = 'POST METHOD CALL';
-                //Ajax POST Method TEST
-                $.ajax({
-                    url: '/api/post',
-                    dataType: 'json',
-                    type: 'POST',
-                    data: {data: post},
-                    success: function (result) {
-                        if (result) {
-                            $('#post_output').html(result.result);
-                        }
+
+                // $.POST Test Code
+                $.post('/api/post', {data: post}, function(result){
+                    if(result){
+                        $('#post_output').html(result.result);
                     }
-                });
+                })
+
+                //Ajax POST Method TEST
+                // $.ajax({
+                //     url: '/api/post',
+                //     dataType: 'json',
+                //     type: 'POST',
+                //     data: {data: post},
+                //     success: function (result) {
+                //         if (result) {
+                //             $('#post_output').html(result.result);
+                //         }
+                //     }
+                // });
             });
         });
     </script>
