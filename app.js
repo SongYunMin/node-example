@@ -35,6 +35,15 @@ app.post('/api/post', function(req, res){
     res.send({result:result});
 });
 
+app.post('/api/login', function(req,res){
+    let ID=req.body.id;
+    let PW=req.body.pw;
+    console.log(ID);
+    console.log(PW);
+
+
+})
+
 app.listen(5005, () =>{
     console.log('Example app listening an port 5005! : 127.0.0.1:5005');
 })

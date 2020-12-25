@@ -15,19 +15,6 @@
                         $('#get_output').html(result.result);
                     }
                 })
-
-                // $.Ajax Test Code
-                // $.ajax({
-                //     url: '/api/get',
-                //     dataType: 'json',
-                //     type: 'GET',
-                //     data: {data: get},
-                //     success: function (result) {
-                //         if (result) {
-                //             $('#get_output').html(result.result);
-                //         }
-                //     }
-                // });
             });
 
             $('#postMethod').click(function () {
@@ -39,20 +26,46 @@
                         $('#post_output').html(result.result);
                     }
                 })
-
-                //Ajax POST Method TEST
-                // $.ajax({
-                //     url: '/api/post',
-                //     dataType: 'json',
-                //     type: 'POST',
-                //     data: {data: post},
-                //     success: function (result) {
-                //         if (result) {
-                //             $('#post_output').html(result.result);
-                //         }
-                //     }
-                // });
             });
+
+            $('#loginBt').click(function (){
+                let id=document.getElementById('loginId');
+                let pw=document.getElementById('loginPw');
+                console.log(id);
+                console.log(pw);
+                $.post('/api/login',{id:id, pw:pw} ,function(result){
+                    if(result){
+                        $('#login_result').html(result.result);
+                    }
+
+                })
+            })
+
+            // $.Ajax Test Code
+            // $.ajax({
+            //     url: '/api/get',
+            //     dataType: 'json',
+            //     type: 'GET',
+            //     data: {data: get},
+            //     success: function (result) {
+            //         if (result) {
+            //             $('#get_output').html(result.result);
+            //         }
+            //     }
+            // });
+
+            //Ajax POST Method TEST
+            // $.ajax({
+            //     url: '/api/post',
+            //     dataType: 'json',
+            //     type: 'POST',
+            //     data: {data: post},
+            //     success: function (result) {
+            //         if (result) {
+            //             $('#post_output').html(result.result);
+            //         }
+            //     }
+            // });
         });
     </script>
     <style media="screen">
@@ -75,6 +88,19 @@
     <button id='postMethod'>POST</button>
     <p id='post_output'>
         post
+    </p>
+</div>
+
+<div style="border: 3px solid gray; width: 180px;">
+    <h2>Login Example</h2>
+    <label for="loginId">아이디 입력</label>
+    <input type="email" id="loginId" name="loginId" placeholder="ID">
+    <hr>
+    <label for="loginPw">패스워드 입력</label>
+    <input type="email" id="loginPw" name="loginPw" placeholder="PW">
+    <hr>
+    <button id='loginBt'>로그인</button>
+    <p id='login_result'>
     </p>
 </div>
 </body>
