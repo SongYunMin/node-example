@@ -6,7 +6,7 @@
     <script>
         $(document).ready(function () {
             $('#getMethod').click(function () {
-                var get = 'GET METHOD CALL';
+                const get = 'GET METHOD CALL';
                 //Ajax GET Method TEST
 
                 // $.get Test Code
@@ -18,7 +18,7 @@
             });
 
             $('#postMethod').click(function () {
-                var post = 'POST METHOD CALL';
+                const post = 'POST METHOD CALL';
 
                 // $.POST Test Code
                 $.post('/api/post', {data: post}, function(result){
@@ -29,10 +29,10 @@
             });
 
             $('#loginBt').click(function (){
-                let id=document.getElementById('loginId');
-                let pw=document.getElementById('loginPw');
-                console.log(id);
-                console.log(pw);
+                let id=document.getElementById('loginId').value;
+                let pw=document.getElementById('loginPw').value;
+                // console.log(id);
+                // console.log(pw);
                 $.post('/api/login',{id:id, pw:pw} ,function(result){
                     if(result){
                         $('#login_result').html(result.result);
@@ -100,8 +100,7 @@
     <input type="email" id="loginPw" name="loginPw" placeholder="PW">
     <hr>
     <button id='loginBt'>로그인</button>
-    <p id='login_result'>
-    </p>
+    <p id='login_result'>결과 : </p>
 </div>
 </body>
 </html>

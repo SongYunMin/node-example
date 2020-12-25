@@ -26,6 +26,7 @@ app.get('/api/get',function(req,res) {
     console.log(result);
     res.send({result:result});
 });
+
 //AJAX POST METHOD
 app.post('/api/post', function(req, res){
     var data = req.body.data;
@@ -35,13 +36,12 @@ app.post('/api/post', function(req, res){
     res.send({result:result});
 });
 
+// Login Response METHOD
 app.post('/api/login', function(req,res){
     let ID=req.body.id;
     let PW=req.body.pw;
     console.log(ID);
     console.log(PW);
-
-
 })
 
 app.listen(5005, () =>{
