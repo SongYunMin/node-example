@@ -6,6 +6,16 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
 
+// JS Class Example
+let MyClass = require('./public/MyClass');
+oop = new MyClass('oop','object oriented programming');
+oop.printInfo();
+
+oop.setName('class');
+oop.printInfo();
+
+console.log(oop.getDescription());
+
 app.get('/', function(req, res){
     fs.readFile('./public/test.html' , function(error,data){
         if(error){
