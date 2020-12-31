@@ -5,11 +5,11 @@ const fs = require("fs");
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
-
 // JS Class Example
 let MyClass = require('./public/myClass');
 oop = new MyClass('oop','object oriented programming');
 oop.printInfo();
+oop.description();
 
 oop.setName('class');
 oop.printInfo();
@@ -26,6 +26,10 @@ app.get('/', function(req, res){
             res.end(data);
         }
     })
+})
+
+app.post('/api/post', function(req,res){
+
 })
 
 //AJAX GET METHOD
