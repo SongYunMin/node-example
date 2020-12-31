@@ -61,7 +61,16 @@ app.post('/api/login', function(req,res){
     let PW=req.body.pw;
     console.log(ID);
     console.log(PW);
-    connection.connect();
+    let stmt = 'SELECT * FROM login';
+    connection.query(stmt, function(err, result){
+        console.log(result);
+        console.log(result[0].id);
+        if(result.id === ID && result.pw === PW){
+            console.log("로그인 성공");
+        }else{
+            console.log("로그인 실패");
+        }
+    })
 
 })
 
