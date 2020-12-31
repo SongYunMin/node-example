@@ -59,19 +59,24 @@ app.post('/api/post', function(req, res){
 app.post('/api/login', function(req,res){
     let ID=req.body.id;
     let PW=req.body.pw;
-    console.log(ID);
-    console.log(PW);
     let stmt = 'SELECT * FROM login';
-    connection.query(stmt, function(err, result){
-        console.log(result);
-        console.log(result[0].id);
-        if(result.id === ID && result.pw === PW){
-            console.log("로그인 성공");
-        }else{
-            console.log("로그인 실패");
-        }
-    })
 
+    connection.query(stmt, function(err, result){
+        console.log("result 길이 : " + result.length);
+        // Full Scan
+        for(let i=0;i<result.length;i++){
+            if(result[i].id === ID && result[i].pw === PW){
+                console.log("Login Success");
+                let success = "Login Success";
+                return res.send({result:success});
+            }
+        }
+        console.log("Login Fail");
+        return res.send({result:"Login Fail"});
+    })
+    // let fail = "아이디와 비밀번호가 일치하지 않습니다.";
+    // console.log("로그인 실패");
+    // return res.send({result:fail});
 })
 
 app.listen(5005, () =>{
