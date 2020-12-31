@@ -1,15 +1,20 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+
+let mysql_dbc = require('../node-test/db_con');
+let connection = mysql_dbc().init();
+mysql_dbc().test_open(connection);
+
 // bodyParser : request body를 json 형식으로 변환
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json());
+
 // JS Class Example
 let MyClass = require('./public/myClass');
 oop = new MyClass('oop','object oriented programming');
 oop.printInfo();
-oop.description();
 
 oop.setName('class');
 oop.printInfo();
@@ -56,6 +61,8 @@ app.post('/api/login', function(req,res){
     let PW=req.body.pw;
     console.log(ID);
     console.log(PW);
+    connection.connect();
+
 })
 
 app.listen(5005, () =>{
