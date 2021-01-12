@@ -74,11 +74,8 @@ app.post('/api/login', function(req,res){
         console.log("Login Fail");
         return res.send({result:"Login Fail"});
     })
-    // let fail = "아이디와 비밀번호가 일치하지 않습니다.";
-    // console.log("로그인 실패");
-    // return res.send({result:fail});
 })
 
-app.listen(5005, () =>{
-    console.log('Example app listening an port 5005! : 127.0.0.1:5005');
+app.listen(1010, () =>{
+    console.log('Example app listening an port 1010! : 127.0.0.1:5005');
 })
