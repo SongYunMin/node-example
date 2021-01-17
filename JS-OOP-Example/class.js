@@ -1,21 +1,32 @@
-class Person{
+class Person {
     // 객체에 해당하는 메서드를 만들때?
-    constructor(name, first, second){      // 생성자
+    constructor(name, first, second) {      // 생성자
         this.name = name;
         this.first = first;
         this.second = second;
     }
+
     // 한번만 정의됨 : 성능 절약
     sum() {
-        return 'prototype : ' + (this.first + this.second);
+        return this.first + this.second;
     }
 }
 
-let kim = new Person('kim',10 ,20);
-kim.sum = function(){   // kim 만 동작을 다르게 정의할 수 있음
-    return 'this : ' + (this.first+this.second);
+class PersonPlus extends Person {
+    constructor(name, first, second, third) {
+        super(name, first, second);     // 부모 클래스 초기화
+        this.third = third;
+    }
+    // 부모 클래스의 sum메소드를 사용
+    sum() {
+        return super.sum() + this.third;
+    }
+    avg() {
+        return (super.sum() + this.third) / 3;
+    }
 }
 
-let lee = new Person('lee',10,10);
-console.log("kim.sum()", kim.sum());    // this : 60
-console.log("lee.sum()", lee.sum());    // modified : 30
+let kim = new PersonPlus('kim', 10, 20, 30);
+
+console.log("kim.sum()", kim.sum());
+console.log("kim.avg()", kim.avg());
