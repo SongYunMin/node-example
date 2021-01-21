@@ -7,18 +7,20 @@ class Desktop{
     }
 
     supportsTemplate(){
-        return 'content' in document.createElement('template');
+        return console.log('content' in document.createElement('template'));
     }
 
     changeDesktop(){
         const desktop = document.querySelector("#template-desktop");
         desktop.content.querySelector(".desktop");
         let clone = document.importNode(desktop.content, true);
-        document.body.appendChild(clone);
+        document.body.appendChild(document.importNode(desktop, true));
 
         const desktopColor = document.querySelector(".desktop");
-        console.log(desktopColor);
+        // console.log(desktopColor);
         desktopColor.style.backgroundColor = this.color;
+
+        return this;
     }
 }
 
