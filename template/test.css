@@ -1,0 +1,8 @@
+.desktop{
+    display: flex;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+    width: 50%;
+    height: 50px;
+}
