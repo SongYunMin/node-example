@@ -26,6 +26,20 @@ class PersonPlus extends Person {
     }
 }
 
+class Student extends PersonPlus{
+    #number
+    constructor(name, first, second, third, number) {
+        super(name, first, second, third);
+        this.#number = number;
+        this.makeStudent();
+    }
+
+    makeStudent(){
+
+    }
+
+}
+
 let kim = new PersonPlus('kim', 10, 20, 30);
 
 console.log("kim.sum()", kim.sum());
