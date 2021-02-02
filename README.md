@@ -5,4 +5,5 @@
 * `Node.js` - Hello World Exmaple
 * 'Node.js` - express Exmaple
 * 'Javascript` - OOP Example
-** ES6 - 클래스 문법 사용
+  * ES6 - 클래스 문법 사용
+* 그 외 다양한 `Javascript` API Example
